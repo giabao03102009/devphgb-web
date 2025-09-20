@@ -3,388 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevPhgb</title>
+  <title>Website đang bảo trì</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background: #ff0050;
-      padding: 12px;
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    /* Chữ chạy quảng cáo */
-    .marquee {
-      width: 100%;
-      overflow: hidden;
-      white-space: nowrap;
-      box-sizing: border-box;
-      background: #000000;
-      color: #f30dae;
-      font-weight: bold;
-      padding: 6px 0;
-      font-size: 18px;
-    }
-
-    .marquee span {
-      display: inline-block;
-      padding-left: 100%;
-      animation: marquee 10s linear infinite;
-    }
-
-    @keyframes marquee {
-      0%   { transform: translateX(0%); }
-      100% { transform: translateX(-100%); }
-    }
-
-    nav {
       display: flex;
       justify-content: center;
-      background: #222;
-      padding: 10px;
-      gap: 15px;
-    }
-
-    nav button {
-      background: #444;
-      color: #fff;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;  
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    nav button:hover {
-      background: #ff0050;
-    }
-
-    .tab-content {
-      display: none;
+      align-items: center;
+      text-align: center;
       padding: 20px;
-      animation: fadeIn 0.5s;
     }
 
-    .tab-content.active {
-      display: block;
+    .container {
+      max-width: 600px;
+      padding: 20px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(255,0,90,0.5);
+      animation: fadeIn 1s ease-in-out;
     }
 
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(10px);}
-      to {opacity: 1; transform: translateY(0);}
+    h1 {
+      font-size: 48px;
+      color: #ff0050;
+      margin-bottom: 20px;
+      animation: glow 1.5s ease-in-out infinite alternate;
     }
 
-    /* Fix Code */
-    .code-box {
-      width: 100%;
-      height: 200px;
-      background: #111;
-      color: #0f0;
-      border-radius: 8px;
-      padding: 10px;
-      font-family: monospace;
-      resize: none;
-      outline: none;
-      border: 2px solid #ff0050;
-    }
-
-    .run-btn {
-      margin-top: 10px;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background: #ff0050;
+    p {
+      font-size: 18px;
       color: #fff;
-      font-weight: bold;
-      transition: 0.3s;
+      margin-bottom: 20px;
     }
 
-    .run-btn:hover { opacity: 0.8; }
-
-    /* Account */
-    .account-box {
-      background: #111;
-      padding: 15px;
-      border-radius: 12px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 0 12px rgba(255,0,90,0.6);
+    .loader {
+      margin: 20px auto;
+      width: 50px;
+      height: 50px;
+      border: 6px solid #fff;
+      border-top: 6px solid #ff0050;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
     }
 
-    .account-box input {
-      width: 100%;
-      padding: 8px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 6px;
-      outline: none;
+    .contact-buttons {
+      margin-top: 25px;
     }
 
-    .account-box button {
-      width: 100%;
-      padding: 10px;
-      margin: 6px 0;
+    .contact-buttons button {
+      padding: 12px 25px;
       border: none;
       border-radius: 8px;
+      color: #fff;
+      margin: 5px;
       cursor: pointer;
       font-weight: bold;
       transition: 0.3s;
+      font-size: 16px;
     }
 
-    .btn-2fa {background: #ff0050; color: #fff;}
-    .btn-cache {background: #0099ff; color: #fff;}
-    .btn-protect {background: #00cc66; color: #fff;}
-    .btn-2fa:hover, .btn-cache:hover, .btn-protect:hover {opacity: 0.8;}
-    button:disabled {background: #555 !important; cursor: not-allowed;}
-
-    /* Progress Bar */
-    .progress {
-      width: 100%;
-      background: #333;
-      border-radius: 8px;
-      overflow: hidden;
-      margin: 10px 0;
-      height: 18px;
-      display: none;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0;
-      background: #ff0050;
-      transition: width 0.2s;
-    }
-
-    /* System Log */
-    .log-box {
-      margin-top: 15px;
-      background: #111;
-      padding: 10px;
-      border-radius: 8px;
-      font-family: monospace;
-      max-height: 150px;
-      overflow-y: auto;
-      font-size: 14px;
-      border: 1px solid #444;
-    }
-
-    /* Toast Notification */
-    .toast {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #222;
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      display: none;
-      animation: fadeInUp 0.5s;
-    }
-
-    @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    /* Live Tab */
-    .live-box {
-      background: #111;
-      padding: 15px;
-      border-radius: 12px;
-      max-width: 450px;
-      margin: auto;
-      box-shadow: 0 0 12px rgba(0,255,200,0.6);
-    }
-
-    .live-box input {
-      width: 100%;
-      padding: 8px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 6px;
-      outline: none;
-    }
-
-    .live-box button {
-      width: 100%;
-      padding: 10px;
-      margin: 6px 0;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-      background: #00ccff;
-      color: #fff;
-    }
-
-    .live-box button:hover {
+    .contact-buttons button:hover {
       opacity: 0.85;
     }
 
+    .tiktok { background: #69C9D0; }
+    .facebook { background: #1877F2; }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #ff0050, 0 0 10px #ff0050, 0 0 20px #ff0050; }
+      100% { text-shadow: 0 0 20px #ff0050, 0 0 30px #ff0050, 0 0 40px #ff0050; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media(max-width: 480px){
+      h1 { font-size: 36px; }
+      p { font-size: 16px; }
+      .contact-buttons button { font-size: 14px; padding: 10px 18px; }
+    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>🚧 Website đang bảo trì 🚧</h1>
+    <p>Chúng tôi đang nâng cấp hệ thống.<br>Vui lòng quay lại sau. Cảm ơn bạn!</p>
+    <div class="loader"></div>
 
-  <header>⚡ DAI KA TRAN THAO MY</header>
-
-  <!-- Chữ chạy quảng cáo -->
-  <div class="marquee"><span>AduMytt</span></div>
-
-  <nav>
-    <button onclick="openTab('dashboard')">Dashboard</button>
-    <button onclick="openTab('fixcode')">Fix Code</button>
-    <button onclick="openTab('account')">Account</button>
-    <button onclick="openTab('live')">Live</button>
-  </nav>
-
-  <!-- Dashboard -->
-  <div id="dashboard" class="tab-content active">
-    <h2>🎉 Welcome!</h2>
-    <p>Đây là Đài Truyền Hình Tiếng Nói Việt Nam 🚀</p>
-  </div>
-
-  <!-- Fix Code -->
-  <div id="fixcode" class="tab-content">
-    <h2>🛠️ Fix Code</h2>
-    <textarea class="code-box" id="codeArea">// code do phgb code...</textarea>
-    <br>
-    <button class="run-btn" onclick="runCode()">▶️ Chạy Code</button>
-    <pre id="output"></pre>
-  </div>
-
-  <!-- Account -->
-  <div id="account" class="tab-content">
-    <h2>👤 Tài Khoản</h2>
-    <div class="account-box">
-      <input type="text" id="username" placeholder="Nhập username TikTok...">
-      <div id="actions">
-        <button class="btn-2fa" onclick="simulateTask('Bật bảo mật 2 bước')" disabled>🔐 Bật bảo mật 2 bước</button>
-        <button class="btn-cache" onclick="simulateTask('Xoá cache')" disabled>🧹 Xoá cache</button>
-        <hr style="margin:15px 0; border:1px solid #333;">
-        <h3>🛡️ Bảo vệ TikTok</h3>
-        <button class="btn-protect" onclick="simulateTask('Chặn hack follow ảo')" disabled>🔒 Chặn hack follow ảo</button>
-        <button class="btn-protect" onclick="simulateTask('Chống bị report spam')" disabled>🛡️ Chống bị report spam</button>
-        <button class="btn-protect" onclick="simulateTask('Ngăn chặn spam')" disabled>🚫 Ngăn chặn spam</button>
-      </div>
-      <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
-      <div class="log-box" id="logBox">[System Log] Chưa có hoạt động nào...</div>
+    <!-- Nút liên hệ TikTok & Facebook -->
+    <div class="contact-buttons">
+      <a href="https://www.tiktok.com/@_phgb.dev._" target="_blank">
+        <button class="tiktok">TikTok</button>
+      </a>
+      <a href="https://www.facebook.com/gbao.0310" target="_blank">
+        <button class="facebook">Facebook</button>
+      </a>
     </div>
   </div>
-
-  <!-- Live -->
-  <div id="live" class="tab-content">
-    <h2>📡 Live Tools</h2>
-    <div class="live-box">
-      <input type="text" id="live-username" placeholder="Nhập username TikTok cho Live...">
-      <button onclick="liveAction('Ban Whilelist')" disabled>🚫 BandTest ( Đừng Dùng )</button>
-      <button onclick="liveAction('BandIDAutoClick')" disabled>⚡ BandAutoClick</button>
-      <button onclick="liveAction('Spam Comment')" disabled>💬 Spam Comment</button>
-      <button onclick="liveAction('Bảo vệ cấp cao')" disabled>🛡️ Bảo vệ cấp cao</button>
-    </div>
-  </div>
-
-  <!-- Toast -->
-  <div id="toast" class="toast"></div>
-
-  <script>
-    function openTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-    }
-
-    function runCode() {
-      const code = document.getElementById("codeArea").value;
-      try {
-        const result = eval(code);
-        document.getElementById("output").textContent = result ?? "Đã chạy code!";
-        showToast("✅ Code đã chạy thành công!");
-        addLog("Chạy code thành công.");
-      } catch (err) {
-        document.getElementById("output").textContent = err;
-        showToast("❌ Lỗi code!");
-        addLog("Lỗi khi chạy code!");
-      }
-    }
-
-    function simulateTask(taskName) {
-      const username = document.getElementById("username").value.trim();
-      if (!username) {
-        showToast("⚠️ Bạn phải nhập username trước!");
-        return;
-      }
-      const btn = event.target;
-      btn.disabled = true;
-      const progress = document.querySelector(".progress");
-      const bar = document.getElementById("progressBar");
-      progress.style.display = "block";
-      bar.style.width = "0%";
-      addLog(taskName + " - Bắt đầu bảo trì...");
-      showToast("⏳ " + taskName + " đang bảo trì...");
-      let width = 0;
-      const interval = setInterval(() => {
-        width += 10;
-        bar.style.width = width + "%";
-        if (width >= 100) {
-          clearInterval(interval);
-          showToast("✅ " + taskName + " hoàn tất!");
-          addLog(taskName + " - Hoàn tất.");
-          btn.disabled = false;
-        }
-      }, 300);
-    }
-
-    function liveAction(action) {
-      const liveUser = document.getElementById("live-username").value.trim();
-      if (!liveUser) {
-        showToast("⚠️ Bạn phải nhập username cho Live!");
-        return;
-      }
-      showToast("🔴 Đang Code: " + action + " cho " + liveUser);
-      addLog("Live action chạy: " + action);
-    }
-
-    function addLog(msg) {
-      const logBox = document.getElementById("logBox");
-      const time = new Date().toLocaleTimeString();
-      if (logBox.textContent.includes("Chưa có hoạt động")) logBox.textContent = "";
-      logBox.innerHTML += `[${time}] ${msg}<br>`;
-      logBox.scrollTop = logBox.scrollHeight;
-    }
-
-    function showToast(msg) {
-      const toast = document.getElementById("toast");
-      toast.textContent = msg;
-      toast.style.display = "block";
-      setTimeout(() => { toast.style.display = "none"; }, 3000);
-    }
-
-    // Enable/disable Account buttons
-    const usernameInput = document.getElementById("username");
-    usernameInput.addEventListener("input", () => {
-      const actions = document.querySelectorAll("#actions button");
-      actions.forEach(btn => btn.disabled = usernameInput.value.trim() === "");
-    });
-
-    // Enable/disable Live buttons
-    const liveUsernameInput = document.getElementById("live-username");
-    liveUsernameInput.addEventListener("input", () => {
-      const liveButtons = document.querySelectorAll("#live button");
-      liveButtons.forEach(btn => btn.disabled = liveUsernameInput.value.trim() === "");
-    });
-  </script>
-
 </body>
 </html>
