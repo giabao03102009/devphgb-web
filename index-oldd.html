@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website đang bảo trì</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      padding: 20px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(255,0,90,0.5);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+      font-size: 48px;
+      color: #ff0050;
+      margin-bottom: 20px;
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+
+    p {
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .loader {
+      margin: 20px auto;
+      width: 50px;
+      height: 50px;
+      border: 6px solid #fff;
+      border-top: 6px solid #ff0050;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .contact-buttons {
+      margin-top: 25px;
+    }
+
+    .contact-buttons button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      margin: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+
+    .contact-buttons button:hover {
+      opacity: 0.85;
+    }
+
+    .tiktok { background: #69C9D0; }
+    .facebook { background: #1877F2; }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #ff0050, 0 0 10px #ff0050, 0 0 20px #ff0050; }
+      100% { text-shadow: 0 0 20px #ff0050, 0 0 30px #ff0050, 0 0 40px #ff0050; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media(max-width: 480px){
+      h1 { font-size: 36px; }
+      p { font-size: 16px; }
+      .contact-buttons button { font-size: 14px; padding: 10px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚧 Website đang bảo trì 🚧</h1>
+    <p>Chúng tôi đang nâng cấp hệ thống.<br>Vui lòng quay lại sau. Cảm ơn bạn!</p>
+    <div class="loader"></div>
+
+    <!-- Nút liên hệ TikTok & Facebook -->
+    <div class="contact-buttons">
+      <a href="https://www.tiktok.com/@_phgb.dev._" target="_blank">
+        <button class="tiktok">TikTok</button>
+      </a>
+      <a href="https://www.facebook.com/gbao.0310" target="_blank">
+        <button class="facebook">Facebook</button>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
